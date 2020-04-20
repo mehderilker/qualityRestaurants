@@ -1,0 +1,6 @@
+module Pods_qualityrestaurants {
+  umbrella header "Pods-qualityrestaurants-umbrella.h"
+
+  export *
+  module * { export * }
+}
