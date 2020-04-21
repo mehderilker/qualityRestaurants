@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image, Button, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, Dimensions,Image, Button, TouchableOpacity} from 'react-native';
+const width_proportion = Dimensions.get('window').width/1.2;
 
-const RestaurantInfoCard = ({imageSource, onPress ,restaurantNameText,cuisinesText,locationText,averageCostForTwo}) => {
+const RestaurantDetailCard = ({imageSource ,restaurantNameText,cuisinesText,locationText,averageCostForTwo}) => {
     return(
         <View style={styles.cardWrapper}>
-            <TouchableOpacity onPress={onPress} style={styles.cardWrapperDetail}>
-                <View>
+            <View style={styles.cardWrapperDetail}>
+                <View style={styles.imageView}>
                     <Image style={styles.imageThumb} source={imageSource}/>
                 </View>
                 <View style={styles.restaurantDetailView}>
@@ -17,10 +18,10 @@ const RestaurantInfoCard = ({imageSource, onPress ,restaurantNameText,cuisinesTe
                         <Text numberOfLines={1} ellipsizeMode='tail' style={{paddingTop:5}}>Mutfak: {cuisinesText} </Text>
                     </View>
                     <View style={styles.locationTextView}>
-                        <Text style={{fontWeight:'100'}}  numberOfLines={1} ellipsizeMode='tail' >{locationText}</Text>
+                        <Text style={{fontWeight:'100'}}  numberOfLines={2} ellipsizeMode='tail' >{locationText}</Text>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </View>
 
         </View>
     )
@@ -35,10 +36,10 @@ const styles = StyleSheet.create({
         paddingRight:15
     },
     cardWrapperDetail:{
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        height: 100,
+        height: 400,
         paddingLeft:5,
         borderRadius: 7.7,
         backgroundColor: '#ffffff',
@@ -47,14 +48,22 @@ const styles = StyleSheet.create({
         shadowOffset:{width:0,height: 2},
         shadowOpacity:0.3,
     },
+    imageView:{
+        padding:15,
+        elevation:1,
+        shadowColor:'#000000',
+        shadowOffset:{width:0,height: 2},
+        shadowOpacity:0.3,
+    },
     imageThumb:{
-        width: 100,
-        height:'90%'
+        borderRadius: 10,
+        width: width_proportion,
+        height:100
     },
     restaurantDetailView:{
-        height:'100%',
         flex:1,
-        paddingLeft:15,
+        width:'100%',
+        paddingLeft:10,
         paddingTop:5,
         flexDirection:'column'
     },
@@ -65,4 +74,4 @@ const styles = StyleSheet.create({
         paddingTop:10
     }
 });
-export {RestaurantInfoCard}
+export {RestaurantDetailCard}

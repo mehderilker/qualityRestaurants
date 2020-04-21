@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Scene, Router, ActionConst} from 'react-native-router-flux';
 import ListRestaurantView from './listRestaurantsView/listRestaurantView';
+import DetailRestaurantView from './detailRestaurantView/detailRestaurantView';
 import SplashView from './splashView/splashView';
 
 const RouterComp = () => {
@@ -17,6 +18,13 @@ const RouterComp = () => {
                 initial
                 component={ListRestaurantView}
                 title="listRestaurant"
+                hideNavBar={true}
+              />
+              <Scene
+                key="detailRestaurant"
+                component={DetailRestaurantView}
+                title="detailRestaurant"
+                gesturesEnabled={true}
                 hideNavBar={true}
               />
           </Scene>
