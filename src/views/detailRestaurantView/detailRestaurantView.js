@@ -8,14 +8,16 @@ import {images} from '../../assets/imgPath';
 import {RestaurantDetailCard} from '../../components';
 import {RestaurantNavbar} from '../../components/navbar/restaurantNavbar';
 
-const ListRestaurantView = (props) => {
+const DetailRestaurantView = (props) => {
     const restaurant = props.detailRestaurant;
-    const phoneNumber = restaurant.phone_numbers !== "" ? restaurant.phone_numbers : "";
 
     return (
-        <RestaurantNavbar hideMenuIcon={true} phoneNumberAdd={phoneNumber} >
+        <RestaurantNavbar hideMenuIcon={true} >
            <RestaurantDetailCard imageSource={{uri:restaurant.thumb !== "" ? restaurant.thumb : "https://i.pinimg.com/236x/b7/02/af/b702afc7b811840ebc49037cdc98bc45.jpg"}}
-           restaurantNameText={restaurant.name} averageCostForTwo={restaurant.average_cost_for_two} cuisinesText={restaurant.cuisines} locationText={restaurant.location.address}/>
+                                 restaurantNameText={restaurant.name}
+                                 averageCostForTwo={restaurant.average_cost_for_two}
+                                 cuisinesText={restaurant.cuisines}
+                                 locationText={restaurant.location.address}/>
         </RestaurantNavbar>
     );
 };
@@ -27,5 +29,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {getBringRestaurantsByLocation,getDetailRestaurantAction},
-)(ListRestaurantView);
+    {},
+)(DetailRestaurantView);
